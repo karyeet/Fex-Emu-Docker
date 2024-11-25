@@ -1,3 +1,6 @@
+# FEX-Emu version tag
+ARG FEX_VERSION=FEX-2311
+
 # ------------------------------------------------------------ Builder ------------------------------------------------------------
 FROM ubuntu:22.04 AS builder
 
@@ -32,7 +35,7 @@ RUN git clone --recurse-submodules https://github.com/FEX-Emu/FEX.git
 
 # Checkout supported version
 RUN cd /FEX && \
-    git checkout FEX-2311 && \
+    git checkout ${FEX_VERSION} && \
     git submodule update --recursive
 
 # Build
