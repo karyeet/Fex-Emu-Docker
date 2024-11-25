@@ -7,7 +7,7 @@ ENV DEBIAN_FRONTEND=noninteractive
 # Install fex
 RUN apt-get update && \
     apt-get install -y \
-    install software-properties-common \
+    software-properties-common \
     wget && \
     add-apt-repository -y ppa:fex-emu/fex && \
     apt install -y fex-emu-armv8.2
