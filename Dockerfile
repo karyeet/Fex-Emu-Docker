@@ -29,7 +29,7 @@ RUN useradd -m ubuntu && \
 COPY --chown=ubuntu:ubuntu --from=builder /Ubuntu_22_04 /home/ubuntu/.fex-emu/RootFS/Ubuntu_22_04
 
 # Copy fex binaries
-COPY --from=builder /FEX/Build/Bin/* /usr/bin/
+COPY --from=builder /usr/bin/FEX* /usr/bin/
 
 USER ubuntu
 
