@@ -15,4 +15,4 @@ RUN wget "https://steamcdn-a.akamaihd.net/client/installer/steamcmd_linux.tar.gz
     tar zxvf steamcmd_linux.tar.gz && \
     rm steamcmd_linux.tar.gz
 
-ENTRYPOINT FEXBash ./steamcmd.sh
+ENTRYPOINT ["FEXBash", "./steamcmd.sh"] 

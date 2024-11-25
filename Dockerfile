@@ -38,4 +38,4 @@ RUN echo '{"Config":{"RootFS":"Ubuntu_22_04"}}' > /home/ubuntu/.fex-emu/Config.j
 
 WORKDIR /home/ubuntu/
 
-ENTRYPOINT FEXBash
+ENTRYPOINT ["FEXBash"]
