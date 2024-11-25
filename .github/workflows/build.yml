@@ -6,9 +6,6 @@ on:
       - main
   workflow_dispatch:
 
-env:
-  FEX_VERSION: FEX-2311
-
 jobs:
   build:
 #    runs-on: ubuntu-22.04
@@ -39,5 +36,3 @@ jobs:
           push: true
           tags: |
             ${{ secrets.DOCKER_USERNAME }}/fex-emu:latest
-            ${{ secrets.DOCKER_USERNAME }}/fex-emu:${{ env.FEX_VERSION }}
-          build-args: FEX_VERSION=${{ env.FEX_VERSION }}
