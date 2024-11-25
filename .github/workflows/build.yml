@@ -36,5 +36,7 @@ jobs:
           context: .
           platforms: linux/arm64
           push: true
-          tags: ${{ secrets.DOCKER_USERNAME }}/fex-emu:latest
+          tags: |
+            ${{ secrets.DOCKER_USERNAME }}/fex-emu:latest
+            ${{ secrets.DOCKER_USERNAME }}/fex-emu:${{ env.FEX_VERSION }}
           build-args: FEX_VERSION=${{ env.FEX_VERSION }}
