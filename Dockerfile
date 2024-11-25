@@ -1,52 +1,16 @@
-# FEX-Emu version tag
-ARG FEX_VERSION=FEX-2311
-
 # ------------------------------------------------------------ Builder ------------------------------------------------------------
 FROM ubuntu:22.04 AS builder
 
 # Avoid interactive prompts
 ENV DEBIAN_FRONTEND=noninteractive
 
-# Install necessary dependencies
+# Install fex
 RUN apt-get update && \
     apt-get install -y \
-    git \
-    cmake \
-    ninja-build \
-    pkg-config \
-    clang \
-    llvm \
-    lld \
-    libsdl2-dev \
-    libepoxy-dev \
-    libssl-dev \
-    python-setuptools \
-    python3-clang \
-    libstdc++-10-dev-i386-cross \
-    libstdc++-10-dev-amd64-cross \
-    libstdc++-10-dev-arm64-cross \
-    squashfs-tools \
-    squashfuse \
-    qtdeclarative5-dev\
-    wget
-
-# Clone the FEX repository and build it
-RUN git clone --recurse-submodules https://github.com/FEX-Emu/FEX.git
-
-# Checkout supported version
-RUN cd /FEX && \
-    git checkout ${FEX_VERSION} && \
-    git submodule update --recursive
-
-# Build
-RUN mkdir /FEX/Build && \
-    cd /FEX/Build && \
-    CC=clang CXX=clang++ cmake -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_BUILD_TYPE=Release -DUSE_LINKER=lld -DENABLE_LTO=True -DBUILD_TESTS=False -DENABLE_ASSERTIONS=False -G Ninja .. && \
-    ninja
-
-# Install
-WORKDIR /FEX/Build
-RUN ninja install
+    install software-properties-common \
+    wget && \
+    add-apt-repository -y ppa:fex-emu/fex && \
+    apt install -y fex-emu-armv8.2
 
 # Get Rootfs 
 # https://rootfs.fex-emu.gg/RootFS_links.json
