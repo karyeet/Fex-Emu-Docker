@@ -1,7 +1,7 @@
 # Fex-Emu-Docker
 FEX-Emu based docker images & Dockerfiles, intended to be used on oracle ampere.
 
-Images are available from [DockerHub](https://hub.docker.com/repository/docker/karyeet/fex-emu/)
+Images are available from [DockerHub](https://hub.docker.com/r/karyeet/fex-emu)
 
 ## Images:
 - Only FEX-Emu installed:
